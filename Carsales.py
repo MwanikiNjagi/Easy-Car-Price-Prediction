@@ -122,9 +122,8 @@ def train_ml_model(X, y, model):
 def predict(training, model):
     training = train_ml_model(X, y, model)
     predict  = training.predict(X_test)
-    
-    return predict
 
-training = train_ml_model(X_train, y_train, 'lr')
-print(predict(training, 'lr'))
+    return print(predict)
 
+a = predict(train_ml_model, 'lr') 
+predict(train_ml_model, 'lsvc')
