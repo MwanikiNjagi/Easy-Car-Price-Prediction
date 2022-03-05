@@ -125,5 +125,3 @@ def predict(training, model):
 
     return print(predict)
 
-a = predict(train_ml_model, 'lr') 
-predict(train_ml_model, 'lsvc')
