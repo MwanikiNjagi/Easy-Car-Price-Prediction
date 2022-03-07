@@ -4,15 +4,13 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_absolute_error, mean_squared_error
+from sklearn.metrics import mean_absolute_error, mean_squared_error, accuracy_score
 from sklearn.svm import LinearSVC
 from sklearn.dummy import DummyClassifier
-from sklearn.metrics import accuracy_score
-import seaborn as sns
 import matplotlib.pyplot as plt
-import xgboost
+from xgboost import XGBRegressor
 
 
 df = pd.read_csv('/home/mwanikii/Desktop/car-sales.csv')
@@ -112,7 +110,7 @@ def train_ml_model(X, y, model):
     
     elif model == 'xg':
 
-        model = xgboost
+        model = XGBRegressor()
 
     model.fit(X_train, y_train)
 
@@ -125,3 +123,14 @@ def predict(training, model):
 
     return print(predict)
 
+models = ['lr','lsvc', 'rf', 'xg'] #List stores the models for iteration and printing the prediction arrays
+
+for i in range(len(models)): 
+    print (predict(train_ml_model, models[i]))
+
+#predict(train_ml_model, 'lr')
+a = predict(train_ml_model, 'lsvc')
+#Both lines above are an example of the ways one can individually bring out the desired arrays
+
+#Testing model accuracy
+rmse = mean_squared_error()
